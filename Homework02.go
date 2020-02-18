@@ -2,21 +2,24 @@ package main
 
 import (
 	"fmt"
+	"math/big"
 	"os"
 )
 
 //  printFibonacci - выводит необходимое количество чисел Фибоначчи
 func printFibonacci(count int64) {
-	var f0, f1, fn uint64
 	var i int64
 
-	f0, f1 = 0, 1
+	f0 := big.NewInt(0)
+	f1 := big.NewInt(1)
+
+	fn := big.NewInt(0)
 
 	fmt.Printf("1 число Фибоначчи: %d \n", f0)
 	fmt.Printf("2 число Фибоначчи: %d \n", f1)
 
 	for i = 3; i <= count; i++ {
-		fn = f0 + f1
+		fn.Add(f0, f1)
 		fmt.Printf("%d число Фибоначчи: %d \n", i, fn)
 
 		f0 = f1
